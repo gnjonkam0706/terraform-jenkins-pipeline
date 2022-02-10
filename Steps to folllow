@@ -1,0 +1,17 @@
+1--> Create a Github Repo, Clone empty repo to your computer
+
+2--> Cd into empty repo
+
+3--> Create terraform files in that folder
+
+4--> git add , commmit and push to your repo
+
+5--> create an ec2 instance
+
+6--> install jenkins
+
+7--> setup pipeline
+
+8--> testing
+
+
