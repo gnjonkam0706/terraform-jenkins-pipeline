@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "code-sharing-bucket"
+    bucket = "jjtech-backend-gnj"
     key = "jt.tfstate"
-    region = "us-west-2"
-    dynamodb_table = "tfstate"
+    region = "us-east-1"
+    dynamodb_table = "jenkins-jjtech"
   }
 }

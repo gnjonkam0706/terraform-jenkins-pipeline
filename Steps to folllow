@@ -6,12 +6,93 @@
 
 4--> git add , commmit and push to your repo
 
-5--> create an ec2 instance
+5--> create an ec2 instance (IAM role with s3,dynamo, ec2 policy)
 
 6--> install jenkins
 
 7--> setup pipeline
 
 8--> testing
+
+#commands to install jenkins
+
+#!/bin/bash
+
+cd /home/ec2-user
+
+sudo yum install java-1.8* -y
+
+sudo yum install wget –y
+
+sudo yum install git –y
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+sudo amazon-linux-extras install epel -y
+
+sudo yum update -y
+
+sudo yum install jenkins java-1.8.0-openjdk-devel
+
+# Start jenkins service
+
+sudo systemctl start jenkins
+
+# Setup Jenkins to start at boot
+
+sudo systemctl enable jenkins
+
+# Setup Jenkins to check the status
+
+sudo systemctl status jenkins
+
+# Obtain admin password
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+#then configure jenkinks web application
+
+#select new item
+
+#enter item name and select FREESTYLE PROJECT
+
+#unders source code management ==> Git ==> copy and paste github url
+
+#under branches to build select master
+
+#Build tab ==> dropdown & select execute shell ==> right click the link below &  open a new tab
+
+#copy the WORKSPACE environment variable
+
+#write the following command in the execute shell space
+
+set +x
+
+ls
+
+#return to dashboard and run build to ensure repo cloning in jenkins is successful
+
+#write the following terraform commands in execute shell
+
+terraform init
+terraform plan
+
+#Install terraform in your ec2 instance
+
+sudo yum install -y yum-utils
+
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+
+sudo yum -y install terraform
+
+#confirm whether terraform is installed in the instance
+
+terraform
+
+
+
 
 
